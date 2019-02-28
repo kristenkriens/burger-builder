@@ -5,7 +5,6 @@ import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import Spinner from '../../components/UI/Spinner/Spinner';
-import axiosOrders from '../../axios-orders';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
 const INGREDIENT_PRICES = {
@@ -104,42 +103,13 @@ class BurgerBuilder extends Component {
   }
 
   purchaseContinueHandler = () => {
-    // this.setState({
-    //   loading: true
-    // });
-    //
-    // const order = {
-    //   ingredients: this.state.ingredients,
-    //   price: this.state.totalPrice,
-    //   customer: {
-    //     name: 'Kristen Kriens',
-    //     address: {
-    //       street: '1 Test Street',
-    //       postalCode: 'A1A 1A1',
-    //       country: 'Canada'
-    //     },
-    //     email: 'test@test.com'
-    //   },
-    //   deliveryMethod: 'fastest'
-    // }
-    //
-    // axiosOrders.post('/orders.json', order)
-    //   .then((response) => {
-    //     this.setState({
-    //       loading: false,
-    //       purchasing: false
-    //     });
-    //   }).catch((error) => {
-    //     this.setState({
-    //       loading: false,
-    //       purchasing: false
-    //     });
-    //   });
     const queryParams = [];
 
     for(let ingredient in this.state.ingredients) {
       queryParams.push(encodeURIComponent(ingredient) + '=' + encodeURIComponent(this.state.ingredients[ingredient]));
     }
+
+    queryParams.push('price=' + this.state.totalPrice);
 
     const queryString = queryParams.join('&');
 

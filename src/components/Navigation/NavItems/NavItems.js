@@ -4,11 +4,11 @@ import NavItem from './NavItem/NavItem';
 
 const NavItems = (props) => (
   <ul className={classes.navItems}>
-    <NavItem link="/" active>
+    <NavItem link="/" exact>
       Burger Builder
     </NavItem>
-    <NavItem link="/">
-      Checkout
+    <NavItem link="/orders">
+      Orders
     </NavItem>
   </ul>
 )
