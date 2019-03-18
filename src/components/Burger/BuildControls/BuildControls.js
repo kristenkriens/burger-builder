@@ -10,7 +10,7 @@ const controls = [
 ];
 
 const BuildControls = (props) => {
-  const { price, ingredientAdded, ingredientRemoved, disabled, purchasable, purchasing } = props;
+  const { price, ingredientAdded, ingredientRemoved, disabled, purchasable, purchasing, isAuthenticated } = props;
 
   return (
     <div className={classes.buildControls}>
@@ -30,7 +30,9 @@ const BuildControls = (props) => {
         className={classes.orderButton}
         disabled={!purchasable}
         onClick={purchasing}
-      >ORDER NOW</button>
+      >
+        {isAuthenticated ? 'ORDER NOW' : 'SIGN UP TO ORDER'}
+      </button>
     </div>
   )
 }

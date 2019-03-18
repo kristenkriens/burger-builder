@@ -4,7 +4,8 @@ import { updateObject } from '../utility';
 const initialState = {
   ingredients: null,
   totalPrice: 5,
-  error: false
+  error: false,
+  building: false
 }
 
 const INGREDIENT_PRICES = {
@@ -23,7 +24,8 @@ const addIngredient = (state, action) => {
 
   const updatedState = {
     ingredients: updatedIngredients,
-    totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
+    totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName],
+    building: true
   }
 
   return updateObject(state, updatedState);
@@ -38,7 +40,8 @@ const removeIngredient = (state, action) => {
 
   const updatedState2 = {
     ingredients: updatedIngredients2,
-    totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
+    totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName],
+    building: true
   }
 
   return updateObject(state, updatedState2);
@@ -48,7 +51,8 @@ const setIngredients = (state, action) => {
   return updateObject(state, {
     ingredients: action.ingredients,
     totalPrice: 5,
-    error: false
+    error: false,
+    building: false
   });
 }
 
@@ -58,16 +62,11 @@ const fetchIngredientsFailed = (state, action) => {
 
 const burgerBuilderReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.ADD_INGREDIENT:
-      return addIngredient(state, action);
-    case actionTypes.REMOVE_INGREDIENT:
-      return removeIngredient(state, action);
-    case actionTypes.SET_INGREDIENTS:
-      return setIngredients(state, action);
-    case actionTypes.FETCH_INGREDIENTS_FAILED:
-      return fetchIngredientsFailed(state, action);
-    default:
-      return state;
+    case actionTypes.ADD_INGREDIENT: return addIngredient(state, action);
+    case actionTypes.REMOVE_INGREDIENT: return removeIngredient(state, action);
+    case actionTypes.SET_INGREDIENTS: return setIngredients(state, action);
+    case actionTypes.FETCH_INGREDIENTS_FAILED: return fetchIngredientsFailed(state, action);
+    default: return state;
   }
 }
 

@@ -5,7 +5,7 @@ import NavItems from '../NavItems/NavItems';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 
 const SideDrawer = (props) => {
-  const { closed, open } = props;
+  const { closed, open, isAuthenticated } = props;
 
   let attachedClasses = [classes.sideDrawer, classes.close];
   if(open) {
@@ -20,7 +20,7 @@ const SideDrawer = (props) => {
           <Logo />
         </div>
         <nav>
-          <NavItems />
+          <NavItems isAuthenticated={isAuthenticated} />
         </nav>
       </div>
     </Fragment>
