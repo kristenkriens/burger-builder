@@ -1,0 +1,38 @@
+.input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.input label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.input input, .input textarea, .input select {
+  outline: none;
+  border: 1px solid #ccc;
+  background-color: white;
+  font: inherit;
+  padding: 6px 10px;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.input input:focus, .input textarea:focus, .input select:focus {
+  outline: none;
+  background-color: #ccc;
+}
+
+.input .invalid {
+  border: 1px solid red;
+  background-color: #fda49a;
+}
+
+.error {
+  text-align: left;
+  color: red;
+  margin: 5px 0;
+}
